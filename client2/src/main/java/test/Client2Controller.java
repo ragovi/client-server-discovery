@@ -1,5 +1,8 @@
 package test;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +13,16 @@ public class Client2Controller {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Client2Controller.class);
 
-	private final String hostName = System.getenv("HOSTNAME");
+	private String hostName = null;
+	
+	public Client2Controller() {
+		try {
+			hostName = InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@RequestMapping("/")
 	public String ribbonPing() {

@@ -1,12 +1,12 @@
 version: '2'
 services:
   eureka:
-    image: ragovi/eureka-service:0.0.1-SNAPSHOT
+    image: eureka-server:0.0.1-SNAPSHOT
     ports:
     - "8761:8761"
 
   client1:
-    image: ragovi/client1:0.0.1-SNAPSHOT
+    image: client1:v1
     links:
     - eureka
     - client2
@@ -14,7 +14,7 @@ services:
     - "8080"
 
   client3:
-    image: ragovi/client3:0.0.1-SNAPSHOT
+    image: client3:v1
     links:
     - eureka
     - client2
@@ -24,14 +24,14 @@ services:
     - client.env
 
   client2:
-    image: ragovi/client2:0.0.1-SNAPSHOT
+    image: client2:v1
     links:
     - eureka
     ports:
     - "8081"
 
   client2_1:
-    image: ragovi/client2:0.0.1-SNAPSHOT
+    image: client2:v1
     links:
     - eureka
     ports:

@@ -13,8 +13,7 @@ public class Client2Service {
 	}
 
 	public String getName() {
-//		return this.restTemplate.getForObject(String.format("http://client2/name"), String.class);
-		return "{\"agreementId\":\"1234\"}";
+		return this.restTemplate.getForObject(String.format("http://client2/name"), String.class);
 	}
 
 
